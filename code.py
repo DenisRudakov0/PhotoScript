@@ -25,7 +25,7 @@ def download_image(data_excel, url_save):
             out.write(p.content)
             out.close()
         except:
-            print('nan')
+            print(name, 'Не имеет ссылки на изображение')
 
 def difference_img(path):
     imgs=tuple(os.listdir(path))
@@ -37,13 +37,12 @@ def difference_img(path):
         result=ImageChops.difference(image_none, image).getbbox()
         if result==None:
             os.remove(path + i)
-            print(image_none, path + i,'matches')
+            print(image_none, path + i,'Не имеет изображение')
 
-# data_excel = pd.read_excel(input("Укажите путь к excel файлу: "))
+data_excel = pd.read_excel(input("Укажите путь к excel файлу: "))
 url_save = input('Укажите места для сохранения изображений: ')
-# C:\Users\Denis\Desktop\image_download\code\image.xlsx
-# C:\Users\Denis\Desktop\test_image\
-# download_image(data_excel, url_save)
+
+download_image(data_excel, url_save)
 difference_img(url_save)
 
 
