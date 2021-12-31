@@ -36,6 +36,7 @@ def difference_img(path):
         image = Image.open(path + i)
         result=ImageChops.difference(image_none, image).getbbox()
         if result==None:
+            os.remove(path + i)
             print(image_none, path + i,'matches')
 
 # data_excel = pd.read_excel(input("Укажите путь к excel файлу: "))
